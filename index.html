@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login & Global Chat</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ffeb3b; /* Yellow background */
+      margin: 0;
+      padding: 0;
+    }
+    h1, h2 {
+      text-align: center;
+      color: #444;
+    }
+    .hidden {
+      display: none;
+    }
+    .container {
+      text-align: center;
+      margin: 20px;
+    }
+    #mapContainer {
+      width: 90%;
+      height: 500px;
+      margin: 20px auto;
+      border: 2px solid #ffcc00;
+      border-radius: 10px;
+    }
+    #chatContainer {
+      width: 90%;
+      margin: 20px auto;
+      border: 2px solid #444;
+      border-radius: 10px;
+      background-color: #fff;
+      padding: 10px;
+    }
+    #chatBox {
+      height: 200px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+      padding: 5px;
+    }
+    #messageInput {
+      width: 70%;
+      padding: 10px;
+      margin-right: 10px;
+    }
+    #sendButton {
+      padding: 10px 20px;
+      background-color: #444;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    #sendButton:hover {
+      background-color: #666;
+    }
+    .delete-btn {
+      color: red;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Login Section -->
+  <div id="loginInterface">
+    <h1>Login</h1>
+    <form id="loginForm">
+      <div class="container">
+        <label>Username: <input type="text" id="loginUsername" required></label><br><br>
+        <label>Password: <input type="password" id="loginPassword" required></label><br><br>
+        <button type="submit">Login</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Main Interface -->
+  <div id="mainInterface" class="hidden">
+    <h1>Welcome to Global Chat</h1>
+
+    <!-- Map Section -->
+    <h2>User Map</h2>
+    <div id="mapContainer"></div>
+
+    <!-- Chat Section -->
+    <h2>Global Chat</h2>
+    <div id="chatContainer">
+      <div id="chatBox"></div>
+      <input type="text" id="messageInput" placeholder="Type your message..." />
+      <button id="sendButton">Send</button>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const users = []; // Array to store user data
+    const chatMessages = []; // Array to store chat messages
+    let currentUser = null; // Currently logged-in user
+
+    // Initialize the map
+    const map = L.map('mapContainer').setView([23.6850, 90.3563], 7); // Centered on Bangladesh
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+    }).addTo(map);
+
+    // Handle Login
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const username = document.getElementById('loginUsername').value;
+      const password = document.getElementById('loginPassword').value;
+
+      // Temporary user registration for testing
+      const user = {
+        username,
+        password,
+        lat: null,
+        lng: null,
+      };
+      users.push(user);
+      currentUser = user;
+
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+          currentUser.lat = position.coords.latitude;
+          currentUser.lng = position.coords.longitude;
+          addUserToMap(currentUser);
+        });
+      }
+
+      document.getElementById('loginInterface').classList.add('hidden');
+      document.getElementById('mainInterface').classList.remove('hidden');
+    });
+
+    // Add user to the map
+    function addUserToMap(user) {
+      const marker = L.marker([user.lat, user.lng]).addTo(map);
+      marker.bindPopup(`<strong>${user.username}</strong>`).openPopup();
+    }
+
+    // Handle chat
+    document.getElementById('sendButton').addEventListener('click', function () {
+      const message = document.getElementById('messageInput').value.trim();
+      if (message) {
+        const chatMessage = {
+          username: currentUser.username,
+          text: message,
+          id: Date.now(),
+        };
+        chatMessages.push(chatMessage);
+        updateChatBox();
+        document.getElementById('messageInput').value = '';
+      }
+    });
+
+    // Update chat box
+    function updateChatBox() {
+      const chatBox = document.getElementById('chatBox');
+      chatBox.innerHTML = '';
+      chatMessages.forEach((msg) => {
+        const messageElement = document.createElement('div');
+        messageElement.innerHTML = `
+          <strong>${msg.username}:</strong> ${msg.text}
+          <span class="delete-btn" onclick="deleteMessage(${msg.id})">Delete</span>
+        `;
+        chatBox.appendChild(messageElement);
+      });
+      chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the bottom
+    }
+
+    // Delete message
+    function deleteMessage(messageId) {
+      const index = chatMessages.findIndex((msg) => msg.id === messageId);
+      if (index !== -1 && chatMessages[index].username === currentUser.username) {
+        chatMessages.splice(index, 1);
+        updateChatBox();
+      } else {
+        alert('You can only delete your own messages!');
+      }
+    }
+  </script>
+</body>
+</html>

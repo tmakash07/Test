@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akash - Aspiring Biostatistician</title>
+  <style>
+   body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    overflow-x: hidden;
+    background-color: #121212;
+    color: #e0e0e0;
+   }
+
+   a {
+    color: #bb86fc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+   }
+
+   a:hover {
+    color: #8a3ffc;
+   }
+
+   #background-video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+   }
+
+   #background-video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.8) contrast(1.2) saturate(1.1);
+   }
+
+   header {
+    background-color: rgba(30, 30, 30, 0.8);
+    color: #fff;
+    padding: 1.5em 0;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    border-bottom: 1px solid #333;
+   }
+
+   nav {
+    background-color: rgba(50, 50, 50, 0.1);
+    padding: 1em 0;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+   }
+
+   nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+   }
+
+   nav li {
+    display: inline;
+    margin: 0 15px;
+   }
+
+   nav li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: background-color 0.3s ease;
+   }
+
+   nav li a:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+   }
+
+   main {
+    padding: 2em;
+    position: relative;
+    z-index: 1;
+    background-color: rgba(30, 30, 30, 0.7);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+   }
+
+   section {
+    padding: 2em;
+    margin-bottom: 2em;
+    background-color: rgba(50, 50, 50, 0.8);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    border: 1px solid #444;
+   }
+
+   section h2 {
+    color: #bb86fc;
+    border-bottom: 2px solid #bb86fc;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+   }
+
+   section ul {
+    list-style: none;
+    padding: 0;
+   }
+
+   section li {
+    padding: 0.5em 0;
+   }
+
+   section a {
+    color: #03dac6;
+    text-decoration: none;
+    transition: color 0.3s ease;
+   }
+
+   section a:hover {
+    color: #018786;
+   }
+
+   footer {
+    background-color: rgba(30, 30, 30, 0.8);
+    color: #fff;
+    padding: 1.5em 0;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    border-top: 1px solid #333;
+    border-radius: 0 0 8px 8px;
+   }
+
+   .video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+   }
+
+   .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 8px;
+   }
+  </style>
+ </head>
+
+ <body>
+  <div id="background-video-container">
+   <iframe src="https://player.vimeo.com/video/1080100559?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;background=1&amp;muted=1&amp;loop=1&amp;autoplay=1"
+    frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; background"
+    style="position:absolute;top:0;left:0;width:100%;height:100%; object-fit: cover; filter: brightness(0.8) contrast(1.2) saturate(1.1);" title="d7b6feabd0a653c49d52723a743195f9"></iframe>
+  </div>
+
+  <header>
+   <nav>
+    <ul>
+     <li><a href="#about">About Me</a></li>
+     <li><a href="#skills">Skills</a></li>
+     <li><a href="#portfolio">Portfolio</a></li>
+     <li><a href="#contact">Contact</a></li>
+     <li><a href="#games">Favorite Games</a></li>
+     <li><a href="gallery.html">Gallery</a></li>
+     <li><a href="#currently-enjoying">Currently Enjoying</a></li>
+    </ul>
+   </nav>
+  </header>
+
+  <main>
+   <section id="about">
+    <h2>Akash</h2>
+    <p>Hello! My name is Akash. Currently, I am a student who completed Class 12 in the Science department at BAF
+     Shaheen College Jashore. I am now an admission candidate, eager to embark on my journey into the fascinating field of
+     biostatistics.</p>
+    <p>I'm a dreamer who believes in blending technology with creativity, and I’m always exploring new ideas. Outside of
+     coding and engineering, I love space, cats (I have three adorable ones!), and meaningful late-night conversations.</p>
+    <p>Whether it’s solving problems or creating something beautiful, I’m here to grow, learn, and share my journey.
+     Outside of my academic and tech life, I’m a curious soul who’s in love with the stars, space, and all things beyond
+     Earth. I also share my home with three adorable cats who basically run the place.</p>
+    <p>I spend a significant amount of my time alone or with my cats. My phone often feels like a constant companion. I love
+     anime (Naruto, One Piece, Demon Slayer, and One Punch Man..... are some of my favorites). I love to play games because
+     it gives me pleasure. I miss my friends a lot. They helped me a lot, thanks buddies (Kaku, Adork).</p>
+    <p>Building, dreaming, exploring—that’s me.</p>
+   </section>
+
+   <section id="skills">
+    <h2>Skills</h2>
+    <ul>
+     <li>Statistical Software: R, Python, SAS (Aspiring)</li>
+     <li>Methodologies: Regression Analysis, Survival Analysis, Clinical Trial Design (Learning)</li>
+     <li>Areas of Expertise: Data Visualization, Statistical Modeling, Interpretation (Developing Interest)</li>
+    </ul>
+   </section>
+
+   <section id="portfolio">
+    <h2>Portfolio</h2>
+    <p>As an aspiring biostatistician, my portfolio is currently under development. Stay tuned for updates on my projects
+     and learning journey!</p>
+   </section>
+
+   <section id="contact">
+    <h2>Contact</h2>
+    <p>You can reach me through the following platforms:</p>
+    <ul>
+     <li>Telegram: <a href="https://t.me/Akaasssh1" target="_blank">@Akaasssh1</a></li>
+     <li>Instagram: <a href="https://www.instagram.com/not_akas_h" target="_blank">@not_akas_h</a></li>
+     <li>Facebook: <a href="https://www.facebook.com/cmpAkash" target="_blank">cmp Akash</a></li>
+     <li>Email: <a href="mailto:opyeah0@gmail.com">opyeah0@gmail.com</a></li>
+    </ul>
+   </section>
+
+   <section id="games">
+    <h2>Favorite Games</h2>
+    <ul>
+     <li>Clash of Clans</li>
+     <li>Minecraft</li>
+     <li>Roblox</li>
+     <li>Frag Pro Shooter</li>
+     <li>Pokemon Adventure</li>
+    </ul>
+   </section>
+
+   <section id="currently-enjoying">
+    <h2>Currently Enjoying</h2>
+    <p>Lately, I've been watching the anime "Blue Box." I know it might sound silly, but I really felt sad for one of the
+     side characters. It just goes to show how well-written some stories can be!</p>
+    <div class="video-container">
+     <iframe src="https://streamable.com/o/ktcbk1" frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen></iframe>
+    </div>
+   </section>
+  </main>
+
+  <footer>
+   <p>© 2025 Akash. All rights reserved.</p>
+  </footer>
+ </body>
+ </html>
